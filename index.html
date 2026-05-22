@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PlotRush | Where Every Plot Hits Hard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#0f0f0f;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* NAVBAR */
+
+    header{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:#111111ef;
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo{
+      font-size:2rem;
+      font-weight:800;
+      color:#ffb703;
+    }
+
+    .logo span{
+      color:white;
+    }
+
+    nav{
+      display:flex;
+      gap:30px;
+    }
+
+    nav a{
+      color:#ddd;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:#ffb703;
+    }
+
+    .menu-btn{
+      display:none;
+      font-size:2rem;
+      cursor:pointer;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),
+      url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:120px 8%;
+    }
+
+    .hero-content{
+      max-width:850px;
+    }
+
+    .hero h1{
+      font-size:5rem;
+      font-weight:800;
+      margin-bottom:20px;
+    }
+
+    .hero h1 span{
+      color:#ffb703;
+    }
+
+    .hero p{
+      font-size:1.2rem;
+      color:#ddd;
+      line-height:1.8;
+      margin-bottom:40px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 32px;
+      border-radius:50px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:#ffb703;
+      color:black;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-4px);
+      background:#ffc933;
+    }
+
+    .btn-outline{
+      border:2px solid #ffb703;
+      color:#ffb703;
+    }
+
+    .btn-outline:hover{
+      background:#ffb703;
+      color:black;
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:90px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:2.8rem;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:#bbb;
+    }
+
+    /* STORIES */
+
+    .story-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .story-card{
+      background:#171717;
+      border-radius:22px;
+      overflow:hidden;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .story-card:hover{
+      transform:translateY(-10px);
+      border-color:#ffb703;
+    }
+
+    .story-card img{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+    }
+
+    .story-content{
+      padding:25px;
+    }
+
+    .story-content h3{
+      margin-bottom:12px;
+      font-size:1.4rem;
+    }
+
+    .story-content p{
+      color:#bbb;
+      line-height:1.7;
+      margin-bottom:20px;
+      font-size:0.95rem;
+    }
+
+    .story-btn{
+      color:#ffb703;
+      font-weight:600;
+    }
+
+    /* CATEGORIES */
+
+    .categories{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:18px;
+    }
+
+    .category{
+      padding:14px 25px;
+      background:#191919;
+      border-radius:50px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.05);
+      cursor:pointer;
+    }
+
+    .category:hover{
+      background:#ffb703;
+      color:black;
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter{
+      background:linear-gradient(to right,#181818,#222222);
+      border-radius:35px;
+      padding:70px 30px;
+      text-align:center;
+    }
+
+    .newsletter h2{
+      font-size:2.5rem;
+      margin-bottom:15px;
+    }
+
+    .newsletter p{
+      color:#bbb;
+      margin-bottom:30px;
+    }
+
+    .newsletter form{
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .newsletter input{
+      width:320px;
+      padding:15px 20px;
+      border:none;
+      outline:none;
+      border-radius:50px;
+      background:#2c2c2c;
+      color:white;
+    }
+
+    .newsletter button{
+      padding:15px 28px;
+      border:none;
+      border-radius:50px;
+      background:#ffb703;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .newsletter button:hover{
+      background:#ffc933;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:40px 8%;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.05);
+      background:#0b0b0b;
+    }
+
+    footer p{
+      color:#999;
+      margin-bottom:15px;
+    }
+
+    .socials{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .socials a{
+      color:#ffb703;
+      font-weight:600;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:3.2rem;
+      }
+
+      nav{
+        position:absolute;
+        top:80px;
+        left:0;
+        width:100%;
+        background:#111;
+        flex-direction:column;
+        align-items:center;
+        padding:30px 0;
+        display:none;
+      }
+
+      nav.active{
+        display:flex;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">
+      Plot<span>Rush</span>
+    </div>
+
+    <nav id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#stories">Stories</a>
+      <a href="#categories">Categories</a>
+      <a href="#latest">Latest</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="menu-btn" onclick="toggleMenu()">
+      ☰
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h1>
+        Plot<span>Rush</span>
+      </h1>
+
+      <p>
+        Where Every Plot Hits Hard. Explore emotional twists, billionaire secrets, revenge stories, romance suspense, and addictive cinematic drama episodes readers can’t stop bingeing.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#stories" class="btn btn-primary">
+          Read Stories
+        </a>
+
+        <a href="#categories" class="btn btn-outline">
+          Explore Categories
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- STORIES -->
+
+  <section id="stories">
+
+    <div class="section-title">
+      <h2>Featured Stories</h2>
+      <p>Trending drama stories everyone is talking about.</p>
+    </div>
+
+    <div class="story-grid">
+
+      <div class="story-card">
+
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="story-content">
+
+          <h3>The Hidden Heir</h3>
+
+          <p>
+            Raised in poverty, a young man discovers he is the missing grandson of the richest empire in the city.
+          </p>
+
+          <a href="#" class="story-btn">
+            Read Episode →
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="story-card">
+
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="story-content">
+
+          <h3>Billionaire’s Secret Wife</h3>
+
+          <p>
+            She married a stranger to survive — only to discover he owns the most feared company in the country.
+          </p>
+
+          <a href="#" class="story-btn">
+            Read Episode →
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="story-card">
+
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="story-content">
+
+          <h3>Lost Legacy</h3>
+
+          <p>
+            A street hustler inherits a fortune tied to a dangerous family secret and deadly enemies.
+          </p>
+
+          <a href="#" class="story-btn">
+            Read Episode →
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CATEGORIES -->
+
+  <section id="categories">
+
+    <div class="section-title">
+      <h2>Categories</h2>
+      <p>Choose the drama style you love.</p>
+    </div>
+
+    <div class="categories">
+
+      <div class="category">Billionaire Drama</div>
+      <div class="category">Romance</div>
+      <div class="category">Revenge</div>
+      <div class="category">Mystery</div>
+      <div class="category">Crime</div>
+      <div class="category">Family Secrets</div>
+      <div class="category">Thriller</div>
+      <div class="category">Emotional Stories</div>
+
+    </div>
+
+  </section>
+
+  <!-- NEWSLETTER -->
+
+  <section id="latest">
+
+    <div class="newsletter">
+
+      <h2>Never Miss a Plot Twist</h2>
+
+      <p>
+        Subscribe to receive new story episodes and trending drama updates.
+      </p>
+
+      <form>
+
+        <input type="email" placeholder="Enter your email">
+
+        <button type="submit">
+          Subscribe
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer id="contact">
+
+    <p>
+      © 2026 PlotRush — Where Every Plot Hits Hard.
+    </p>
+
+    <div class="socials">
+
+      <a href="#">TikTok</a>
+      <a href="#">YouTube</a>
+      <a href="#">Instagram</a>
+
+    </div>
+
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    function toggleMenu(){
+      document.getElementById("navMenu").classList.toggle("active");
+    }
+
+  </script>
+
+</body>
+</html>
